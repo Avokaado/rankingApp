@@ -13,7 +13,7 @@ db.serialize(function() {
 
   var stmt = db.prepare("INSERT INTO Stuff VALUES (?, ?)");
 
-  stmt.run(4, "Lorem ipsum");
+  stmt.run(5, "Testiä");
   
 stmt.finalize();
 
