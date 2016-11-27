@@ -1,11 +1,13 @@
 'use strict';
 
+const Path = require('path');
 const Hapi = require('hapi');
 const Good = require('good');
 
 const server = new Hapi.Server();
+
 server.connection({
-	host: 'localhost', 
+	host: 'localhost',
 	port: 8000 });
 
 server.register(require('inert'), (err) => {
@@ -14,36 +16,21 @@ server.register(require('inert'), (err) => {
     }
     server.route({
         method: 'GET',
-        path: '/',
-        handler: function (request, reply) {
-            reply.file('./view/index.html');
+        path: '/{param*}',
+        handler: {
+            directory: {
+                path: 'public'
+            }
         }
     });
-});
-
-/*server.route({
-    method: 'GET',
-    path: '/{name}',
-    handler: function (request, reply) {
-        reply('Hello, ' + encodeURIComponent(request.params.name) + '!');
-    }
-});*/
-
-server.register(require('inert'), (err) => {
-
-    if (err) {
-        throw err;
-    }
-
     server.route({
         method: 'GET',
-        path: '/hello',
+        path: '/contactList',
         handler: function (request, reply) {
-            reply.file('./public/hello.html');
+            console.log('I received a GET request')
         }
     });
 });
-
 
 server.register({
     register: Good,
