@@ -17,7 +17,8 @@
 	</head>
 	<body>
 		<h1 class="text-center">Hello World</h1>
-		<div class="container" ng-controller="AppCtrl">
+		<div class="container" ng-controller="AppCtrl as Ctrl">
+			<h3>{{ Ctrl.contactList }}</h3>
 			<table class="table">
 				<thead>
 					<tr>
@@ -28,7 +29,22 @@
 					</tr>
 				</thead>
 				<tbody>
-					<tr ng-repeat="contact in contactList">
+					<tr>
+						<td>
+							<input class="form-control" ng-model="contact.name">
+						</td>
+						<td>
+							<input class="form-control" ng-model="contact.points">
+						</td>
+						<td>
+							<input class="form-control" ng-model="contact.won">
+						</td>
+						<td>
+							<input class="form-control" ng-model="contact.lost">
+						</td>
+						<td><button class="btn btn-primary" ng-click="addContact()">Add New</td>
+					</tr>
+					<tr ng-repeat="contact in Ctrl.contactList">
 						<td>{{ contact.name }}</td>
 						<td>{{ contact.points }}</td>
 						<td>{{ contact.won }}</td>

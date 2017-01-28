@@ -1,5 +1,8 @@
 'use strict';
 
+var sqlite3         =       require('sqlite3').verbose();
+var db              =       new sqlite3.Database('database/kokeilu.db');
+
 const Path = require('path');
 const Hapi = require('hapi');
 const Good = require('good');
@@ -23,12 +26,26 @@ server.register(require('inert'), (err) => {
             }
         }
     });
+
     server.route({
         method: 'GET',
         path: '/contactList',
         handler: function (request, reply) {
-            console.log('I received a GET request')
+            db.each("SELECT * FROM stats", function(err, row) {
+                console.log(row);
+                reply(row);
+            });
         }
+    });
+
+
+    server.route({
+        method: 'POST',
+        path: '/contactList',
+        handler: function (request, reply) {
+            console.log(request.payload);
+            var stmt = db.prepare("INSERT INTO stats VALUES (?,?,?,?)");
+            }
     });
 });
 
