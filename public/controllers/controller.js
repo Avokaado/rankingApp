@@ -35,6 +35,11 @@ $http.get('/contactList').then(function successCallback(res){
     vm.contactList = [person1, person2, person3];*/
 
 $scope.addContact = function () {
+    /*parseInt(
+        $('toInt').each(function(){
+            $(this).value;
+        })
+    );*/
     console.log ($scope.contact);
     $http.post('/contactList', $scope.contact);
 };

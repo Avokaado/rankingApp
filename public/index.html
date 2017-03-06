@@ -34,13 +34,13 @@
 							<input class="form-control" ng-model="contact.name">
 						</td>
 						<td>
-							<input class="form-control" ng-model="contact.points">
+							<input class="form-control toInt" ng-model="contact.points">
 						</td>
 						<td>
-							<input class="form-control" ng-model="contact.won">
+							<input class="form-control toInt" ng-model="contact.won">
 						</td>
 						<td>
-							<input class="form-control" ng-model="contact.lost">
+							<input class="form-control toInt" ng-model="contact.lost">
 						</td>
 						<td><button class="btn btn-primary" ng-click="addContact()">Add New</td>
 					</tr>
@@ -60,5 +60,6 @@
 		<!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
 		<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.8/angular.min.js"></script>
 		<script src="controllers/controller.js"></script>
+		<script src="main.js"></script>
 	</body>
 </html>
